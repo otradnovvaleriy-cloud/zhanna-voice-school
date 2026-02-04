@@ -335,6 +335,14 @@
         width: 100%;
       }
     }
+     /* ФОТО ГОЛОСА */
+     .photo-section { display: flex; align-items: center; gap: 40px; margin: 50px 0; }
+     .photo-container { position: relative; flex: 1; }
+     .speaker-photo { width: 100%; max-width: 300px; border-radius: 15px; box-shadow: 0 10px 30px rgba(255, 213, 79, 0.2); }
+     .photo-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 213, 79, 0.05); border-radius: 15px; }
+     .photo-text { flex: 1; }
+     .quote { font-size: 18px; color: #ddd; font-style: italic; margin-bottom: 15px; line-height: 1.6; }
+     .author { font-size: 16px; color: #ffd54f; font-weight: 600; margin-top: 0; }
   </style>
 </head>
 <body>
@@ -375,6 +383,19 @@
           Школа Жанны Солнце — путь от страха к уверенности на сцене
         </p>
       </section>
+           <!-- ФОТО ЖАННЫ -->
+           <section class="section photo-section">
+                    <div class="photo-container">
+                               <img src="zhanna-photo.jpg" alt="Жанна Солнце" class="speaker-photo">
+                               <div class="photo-overlay"></div>
+                             </div>
+                    <div class="photo-text">
+                               <p class="quote">
+                                            «Я научилась доверять себе на сцене. Страх сменился уверенностью и желанием выступать. Я умею говорить так, чтобы меня слушали.»
+                                          </p>
+                               <p class="author">— Жанна Солнце</p>
+                             </div>
+                  </section>
       <!-- О ШКОЛЕ -->
       <section class="section">
         <h2>О школе</h2>
