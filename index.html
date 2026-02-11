@@ -26,7 +26,7 @@
       text-decoration: underline;
     }
     .page {
-      max-width: 1000px;
+      max-width: 100%;
       margin: 0 auto;
       padding: 20px 16px 60px;
     }
@@ -343,9 +343,80 @@
      .photo-text { flex: 1; }
      .quote { font-size: 18px; color: #ddd; font-style: italic; margin-bottom: 15px; line-height: 1.6; }
      .author { font-size: 16px; color: #ffd54f; font-weight: 600; margin-top: 0; }
+
+/* Layout: центр + боковые видео */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1000px) 1fr;
+  min-height: 100vh;
+}
+
+/* Центральная колонка */
+.page-wrapper {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+/* Боковые зоны с видео */
+.side-video {
+  position: relative;
+  overflow: hidden;
+}
+
+.side-video video {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100vh;
+}
+
+/* левая колонка */
+.side-video.left video {
+  left: 0;
+}
+
+/* правая колонка */
+.side-video.right video {
+  right: 0;
+}
+
+/* затемняющий фон под центром */
+.page-wrapper::before {
+  content: "";
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0a0acc 0%, #1a1a2ecc 100%);
+  z-index: -1;
+}
+
+/* мобильная версия */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .side-video {
+    display: none;
+  }
+  .page-wrapper::before {
+    width: 100%;
+  }
+}
   </style>
 </head>
 <body>
+    <div class="layout">
+    <div class="side-video left">
+      <video autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="page-wrapper">
+      
   <div class="page">
     <header class="header">
       <div class="terra-logo">
@@ -629,6 +700,15 @@
       document.getElementById(moduleName).classList.add("active");
       evt.currentTarget.classList.add("active");
     }
+    </div> <!-- .page-wrapper -->
+
+    <div class="side-video right">
+      <video autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div> <!-- .layout -->
+    
   </script>
 </body>
 </html>
